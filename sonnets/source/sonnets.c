@@ -21,6 +21,7 @@ char *lastwordtok(char *line) {
   return line + pos;
 }
 
+/* Start of my solution */
 char *uppercase(char *str) {
   for (int i = 0; str[i] != '\0'; i++) {
     str[i] = toupper(str[i]);
@@ -135,7 +136,7 @@ void most_common_rhyme_scheme(FILE *sonnets_file,
   dict_free(rhyme_frequency);
 
 }
-
+/* End of my solution */
 
 #ifdef SONNETS_MAIN
 

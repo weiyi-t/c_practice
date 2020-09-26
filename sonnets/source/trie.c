@@ -5,14 +5,6 @@
 #include <stdio.h>
 #include <string.h>
 
-/* Checks if child exists by its corresponding bitfield position */
-#define EXIST_CHILD(node, pos) ((node->bitfield >> pos) & 1)
-/* Finds the number of children of a node */
-#define NO_OF_CHILD(node) (count_set_bits(node->bitfield) - (node->bitfield & 1))
-/* Gets index of child at pos in bitfield in the node's children array */
-#define GET_CHILD_INDEX(node, pos) (count_set_bits(node->bitfield >> pos) - 1)
-
-
 // Returns the position of the bit that represents the existence of this symbol
 // in the bitfield, or -1 if the symbol is not in the alphabet we support.
 int get_bit_pos(char symbol) {
@@ -27,6 +19,14 @@ int get_bit_pos(char symbol) {
       default   : return -1;
     }
 }
+
+/* Start of my solution */
+/* Checks if child exists by its corresponding bitfield position */
+#define EXIST_CHILD(node, pos) ((node->bitfield >> pos) & 1)
+/* Finds the number of children of a node */
+#define NO_OF_CHILD(node) (count_set_bits(node->bitfield) - (node->bitfield & 1))
+/* Gets index of child at pos in bitfield in the node's children array */
+#define GET_CHILD_INDEX(node, pos) (count_set_bits(node->bitfield >> pos) - 1)
 
 trie_t *trie_new() {
   trie_t *trie = calloc(1, sizeof(trie_t));
@@ -114,6 +114,7 @@ bool trie_insert(trie_t *root, const char *key, int value) {
   // Recursive insert
   return trie_insert(root->children[index], key + 1, value);
 }
+/* End of my solution */
 
 #ifdef TRIE_MAIN
 
